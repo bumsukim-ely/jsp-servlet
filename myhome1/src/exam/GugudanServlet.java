@@ -23,23 +23,16 @@ public class GugudanServlet extends HttpServlet {
         super();
     }
 
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html; charset=UTF-8");
-		String dan = request.getParameter("dan");
-
-		
-		PrintWriter out = response.getWriter(); 
-		String html = "";
-		
-		html += "<table border=\"1\">";
-		html += "	<caption>" + dan + "단 </caption>";
-		html += "	<tr>";
-		for(int i=1; i<10; i++) {
-			html += "		<td>" + dan + " * " + i + " = " + Integer.parseInt(dan)*i + "</td>";
-		}
-		html += "</table>";
-		
+//	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//		response.setCharacterEncoding("UTF-8");
+//		response.setContentType("text/html; charset=UTF-8");
+//
+//		PrintWriter out = response.getWriter(); 
+//		String html = "";
+//		
+//		html += "<table border=\"1\">";
+//		html += "	<tr>";
+//		
 //		for(int i=1; i<10; i++) {
 //			html += "    <table border=\"1\">";
 //			html += "		 <caption>" + i + "단 </caption>";
@@ -50,7 +43,25 @@ public class GugudanServlet extends HttpServlet {
 //			html += "        </tr>";
 //			html += "    </table>";
 //		}
+//		out.println(html);
+//	}
+    
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+		String dan = request.getParameter("dan");
+
+		PrintWriter out = response.getWriter(); 
+		String html = "";
+		
+		html += "<table border=\"1\">";
+		html += "	<caption>" + dan + "단 </caption>";
+		html += "	<tr>";
+		for(int i=1; i<10; i++) {
+			html += "		<td>" + dan + " * " + i + " = " + Integer.parseInt(dan)*i + "</td>";
+		}
+		
+		html += "</table>";
 		out.println(html);
 	}
-
 }

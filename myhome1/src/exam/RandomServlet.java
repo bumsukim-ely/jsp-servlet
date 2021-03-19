@@ -19,8 +19,39 @@ public class RandomServlet extends HttpServlet {
         super();
     }
     
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+//	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//		response.setCharacterEncoding("UTF-8");
+//		response.setContentType("text/html; charset=UTF-8");
+//		PrintWriter out = response.getWriter();
+//		
+//		Random rand = new Random();
+//		String html = "";
+//		int result = rand.nextInt(100)+1;
+//		
+//		html += "<!DOCTYPE html>";
+//		html += "<head>";
+//		html += "    <meta charset=\"UTF-8\">";
+//		html += "    <title>Document</title>";
+//		html += "</head>";
+//		html += "<body>";
+//		html += "<h2>" + result + "</h2>";
+//		if(result>=1 && result <=20) {
+//			html += "	<p style=\"color:#F85615\">" + result + "</p>";
+//		} else if (result>=21 && result <=40) {
+//			html += "	<p style=\"color:#F8156C\">" + result + "</p>";
+//		} else if (result>=41 && result <=60) {
+//			html += "	<p style=\"color:#159DF8\">" + result + "</p>";
+//		} else if (result>=61 && result <=80) {
+//			html += "	<p style=\"color:#4AF815\">" + result + "</p>";
+//		} else {
+//			html += "	<p style=\"color:#F8E115\">" + result + "</p>";
+//		}
+//		html += "</body>";
+//		html += "</html>";
+//		out.println(html);
+//	}
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
@@ -37,17 +68,6 @@ public class RandomServlet extends HttpServlet {
 		html += "</head>";
 		html += "<body>";
 		html += "<h2>" + result + "</h2>";
-//		if(result>=1 && result <=20) {
-//			html += "	<p style=\"color:#F85615\">" + result + "</p>";
-//		} else if (result>=21 && result <=40) {
-//			html += "	<p style=\"color:#F8156C\">" + result + "</p>";
-//		} else if (result>=41 && result <=60) {
-//			html += "	<p style=\"color:#159DF8\">" + result + "</p>";
-//		} else if (result>=61 && result <=80) {
-//			html += "	<p style=\"color:#4AF815\">" + result + "</p>";
-//		} else {
-//			html += "	<p style=\"color:#F8E115\">" + result + "</p>";
-//		}
 		html += "</body>";
 		html += "</html>";
 		out.println(html);
