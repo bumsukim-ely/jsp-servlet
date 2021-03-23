@@ -1,7 +1,6 @@
 package exam;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Random;
 
 import javax.servlet.ServletException;
@@ -54,23 +53,13 @@ public class RandomServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
-		PrintWriter out = response.getWriter();
 		
 		String[] range = request.getParameterValues("range");
 		Random rand = new Random();
-		String html = "";
+		
 		int result = rand.nextInt(Integer.parseInt(range[1])-Integer.parseInt(range[0]))+Integer.parseInt(range[0]);
 		
-		html += "<!DOCTYPE html>";
-		html += "<head>";
-		html += "    <meta charset=\"UTF-8\">";
-		html += "    <title>Document</title>";
-		html += "</head>";
-		html += "<body>";
-		html += "<h2>" + result + "</h2>";
-		html += "</body>";
-		html += "</html>";
-		out.println(html);
+		response.sendRedirect("random/res?rs="+result+"&mn="+range[0]+"&mx="+range[1]);
 	}
 
 }
