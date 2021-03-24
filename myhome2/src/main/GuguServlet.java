@@ -1,6 +1,7 @@
 package main;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -21,6 +22,19 @@ public class GuguServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher dp = request.getRequestDispatcher("gugu.jsp");
+		dp.forward(request, response);
+	}
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int dan_num = Integer.parseInt(request.getParameter("dan_num"));
+		
+		ArrayList<String> gugu_res = new ArrayList<String>();
+		for(int i=1; i<10; i++) {
+			gugu_res.add(dan_num + " x " + i + " = " + (dan_num * i));
+		}
+		
+		request.setAttribute("gugu_res", gugu_res);
+		RequestDispatcher dp = request.getRequestDispatcher("gugures.jsp");
 		dp.forward(request, response);
 	}
 
