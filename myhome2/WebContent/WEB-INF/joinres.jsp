@@ -4,13 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>메인페이지</title>
+<title>Insert title here</title>
 </head>
 <body>
-	<h1>환영합니다.</h1>
-	<ul>
-		<li><a href="./gugudan">구구단</a></li>
-		<li><a href="./random">랜덤</a></li>
-	</ul>
+	<h1>회원가입 확인</h1>
+	<h3><%=request.getParameter("userid") %></h3>
+	<h3><%=request.getParameter("email") %></h3>
 </body>
 </html>
