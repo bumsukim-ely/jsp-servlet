@@ -44,7 +44,7 @@ public class VisitDAO {
 			pstat = this.conn.prepareStatement(sql);
 			pstat.setInt(1, id);
 			
-			ResultSet res = this.pstat.executeQuery(sql);
+			ResultSet res = this.pstat.executeQuery();
 			if(res.next()) {
 				record = new VisitVO(
 					res.getInt("id"),
@@ -64,12 +64,15 @@ public class VisitDAO {
 	public ArrayList<VisitVO> getRecords(Date date) {
 		String sql = "";
 		sql += "SELECT * FROM visit_t";
-		sql += " WHERE TO_CHAR(create_date, 'YYYY-MM-DD') = '" + date + "'";
+		sql += " WHERE TO_CHAR(create_date, 'YYYY-MM-DD') = ?";
 		sql += " ORDER BY id DESC";
 		
 		ArrayList<VisitVO> records = new ArrayList<VisitVO>();
 		try {
-			ResultSet res = this.stat.executeQuery(sql);
+			pstat = this.conn.prepareStatement(sql);
+			pstat.setDate(1, date);
+			
+			ResultSet res = this.pstat.executeQuery();
 			while(res.next()) {
 				records.add(new VisitVO(
 					res.getInt("id"),
@@ -93,7 +96,9 @@ public class VisitDAO {
 		
 		ArrayList<VisitVO> all = new ArrayList<VisitVO>();
 		try {
-			ResultSet res = this.stat.executeQuery(sql);
+			pstat = this.conn.prepareStatement(sql);
+			
+			ResultSet res = this.pstat.executeQuery();
 			while(res.next()) {
 				all.add(new VisitVO(
 					res.getInt("id"),
@@ -128,7 +133,7 @@ public class VisitDAO {
 			pstat.setString(1, data.getAuthor());
 			pstat.setString(2,  data.getContext());
 			
-			result = this.pstat.executeUpdate(sql);	// 저장 처리 완료시 1 반환
+			result = this.pstat.executeUpdate();	// 저장 처리 완료시 1 반환
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -136,6 +141,25 @@ public class VisitDAO {
 		return result;
 	}
 	
+	public int updataData(VisitVO data) {
+		int result = 0;
+		String sql = "";
+		sql += "UPDATE visit_t";
+		sql += "	SET context=?";
+		sql += " WHERE id=?";
+		
+		try {
+			pstat = this.conn.prepareStatement(sql);
+			pstat.setString(1, data.getContext());
+			pstat.setInt(2, data.getId());
+			
+			result = this.pstat.executeUpdate();	// 저장 처리 완료시 1 반환
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
 	public int deleteData(int id) {
 		/**
 		 * 	visit_t 테이블의 데이터를 삭제하는 메서드
@@ -146,9 +170,12 @@ public class VisitDAO {
 		int result = 0;
 		String sql = "";
 		sql += "DELETE FROM visit_t";
-		sql += " WHERE id = " + id;
+		sql += " WHERE id = ?";
 		try {
-			result = this.stat.executeUpdate(sql);
+			pstat = this.conn.prepareStatement(sql);
+			pstat.setInt(1, id);
+			
+			result = this.pstat.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -164,4 +191,6 @@ public class VisitDAO {
 			e.printStackTrace();
 		}
 	}
+	
+	
 }
