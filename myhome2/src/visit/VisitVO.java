@@ -1,6 +1,8 @@
 package visit;
 
 import java.sql.Date;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class VisitVO {
 	private int id;

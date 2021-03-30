@@ -15,6 +15,7 @@
 		<li><a href="./login">로그인</a></li>
 		<li><a href="./member?name=admin">멤버 DB 연결</a></li>
 		<li><a href="./visit">방명록 DB 연결</a></li>
+		<li><a href="./board">게시판</a></li>
 	</ul>
 </body>
 </html>
