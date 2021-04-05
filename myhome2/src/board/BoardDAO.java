@@ -36,7 +36,6 @@ public class BoardDAO {
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
-		
 		return record;
 	}
 	
@@ -44,7 +43,7 @@ public class BoardDAO {
 		ArrayList<BoardVO> records = new ArrayList<BoardVO>();
 		
 		String sql = "";
-		sql += "SELECT * FROM" + this.table;
+		sql += "SELECT * FROM " + this.table;
 		sql += " ORDER BY id DESC";
 		
 		try {
@@ -58,7 +57,6 @@ public class BoardDAO {
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
-		
 		return records;
 	}
 	

@@ -38,7 +38,6 @@ public class VisitServlet extends HttpServlet {
 		
 		// 2. 추출한 파라메터를 VisitVO를 생성하여 저장
 		VisitVO data = new VisitVO(author, context);
-		
 		// 3. VisitDAO를 생성 후 2번에서 만든 VisitVO를 전달 후 저장
 		VisitDAO visit = new VisitDAO();
 		visit.saveData(data);

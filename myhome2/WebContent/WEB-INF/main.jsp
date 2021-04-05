@@ -5,9 +5,22 @@
 <head>
 <meta charset="UTF-8">
 <title>메인페이지</title>
+<%@ include file="/WEB-INF/module/css_js.jsp" %>
 </head>
 <body>
-	<h1>환영합니다.</h1>
+	<header>
+		<%@ include file="/WEB-INF/module/top_nav.jsp" %>
+	</header>
+	<%
+		if(logined.equals("true")) {
+	%>
+			<h1><%=session.getAttribute("username") %>님 환영합니다.</h1>
+	<%
+		} else { %>
+			<h1>환영합니다.</h1>
+	<%
+		}
+	%>
 	<ul>
 		<li><a href="./gugudan">구구단</a></li>
 		<li><a href="./random">랜덤</a></li>

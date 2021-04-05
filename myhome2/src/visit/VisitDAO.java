@@ -122,7 +122,7 @@ public class VisitDAO {
 		 *  	- VisitVO 의 id 는 Database에서 자동증가로 
 		 *  	  저장하기때문에 별도의 설정은 필요없음
 		 *  	- VisitVO 의 create_date는 Database의 
-		 *  	  SSYSDATE로 저장하기 때문에 별도의 설정이 필요없음
+		 *  	  SYSDATE로 저장하기 때문에 별도의 설정이 필요없음
 		 */
 		int result = 0;		// 저장 처리 유무를 판별
 		String sql = "";
@@ -137,7 +137,7 @@ public class VisitDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+	
 		return result;
 	}
 	

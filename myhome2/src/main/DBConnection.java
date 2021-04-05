@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DBConnection {
-	private String url = "jdbc:orcle:thin:@";
+	private String url = "jdbc:oracle:thin:@";
 	private String ip = "localhost";
 	private String port = "1521";
 	private String username = "web_admin";
